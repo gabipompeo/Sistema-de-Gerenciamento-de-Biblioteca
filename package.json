@@ -1,0 +1,22 @@
+{
+  "name": "sistema-de-gerenciamento-de-biblioteca",
+  "version": "1.0.0",
+  "description": "Sistema de biblioteca",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabipompeo/Sistema-de-Gerenciamento-de-Biblioteca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}
