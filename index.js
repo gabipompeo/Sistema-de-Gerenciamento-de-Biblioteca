@@ -41,88 +41,73 @@ app.get('/menu',veri,(req,res)=>{
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .navbar-brand {
+                    font-size: 1.3rem;
+                }
+
+                .nav-link {
+                    font-weight: 500;
+                }
+
+                .dropdown-menu {
+                    border-radius: 10px;
+                }
+
+                .alert-info {
+                    background-color: #e7f3ff;
+                    border-color: #b6d4fe;
+                    color: #084298;
+                }
+            </style>
         </head>
-        <body>  `);
+        <body>`);
+
    res.write(`
-
-<style>
-    .bg-rosa {
-        background-color: #ffb6c1 !important;
-    }
-
-    .bg-rosa-claro {
-        background-color: #ffc0cb !important;
-    }
-
-    .navbar a, .navbar-brand {
-        color: white !important;
-        font-weight: bold;
-    }
-
-    .dropdown-menu {
-        background-color: #ffe4e1;
-    }
-
-    .dropdown-item:hover {
-        background-color: #ffb6c1;
-        color: white;
-    }
-</style>
-
-<div class="pos-f-t">
-  <div class="collapse" id="menuCollapse">
-    <div class="bg-rosa p-4 text-center">
-      <h5 class="text-white h4">Sistema Biblioteca</h5>
-      <span class="text-white">Menu rápido do sistema</span>
-    </div>
-  </div>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-rosa">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapse">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-semibold" href="/menu">Biblioteca</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <a class="navbar-brand ms-3" href="/menu">Biblioteca</a>
-
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-3">
-
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/menu">Home</a>
+          <a class="nav-link active" aria-current="page" href="/menu">Home</a>
         </li>
-
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Cadastro
           </a>
-
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/livro">Livro</a></li>
-            <li><a class="dropdown-item" href="/listaLivros"> Listar Livros</a></li>
+            <li><a class="dropdown-item" href="/livro">Cadastro de Livros</a></li>
+            <li><a class="dropdown-item" href="/listaLivros">Listar Livros</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/leitor"> Leitor</a></li>
-            <li><a class="dropdown-item" href="/listaLeitores">📄 Listar Leitores</a></li>
+            <li><a class="dropdown-item" href="/leitor">Cadastro de Leitores</a></li>
+            <li><a class="dropdown-item" href="/listaLeitores">Listar Leitores</a></li>
           </ul>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="/logout">Sair</a>
         </li>
-
       </ul>
     </div>
-  </nav>
-</div>
-
+  </div>
+</nav>
 `);
-    
-        res.write(`
+
+    res.write(`
     <div class="container mt-4">
         <div class="alert alert-info" role="alert">
             Último acesso: ${ultimo}
         </div>
     </div>
-`)
+`);
     res.write(` 
         </body> 
         `)
@@ -143,36 +128,44 @@ app.get("/livro",veri,(requisicao,resposta)=>{
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .btn-primary {
+                    padding: 8px 18px;
+                    font-size: 15px;
+                }
+            </style>
         </head>
 
         <body>
             <div class="container mt-5">
-                <form method="POST" action="/livro" class="row  gy-2 gx-3 align-items-center border p-3  ">
+                <form method="POST" action="/livro" class="row gy-2 gx-3 align-items-center border rounded bg-white shadow-sm p-4">
                 <legend>
                     <h3>Cadastre os Livros</h3>
                 </legend>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="titulo"
-                    >Título do Livro</label>
+                    <label class="form-label" for="titulo">Título do Livro</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="titulo" name="titulo" >
                 </div> 
                 
                 <div class="row mb-3">
-                    <label class="sr-only" for="autor"
-                    >Nome do Autor</label>
+                    <label class="form-label" for="autor">Nome do Autor</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="autor" name="autor" >
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="isbn"
-                    >Código ISBN</label>
+                    <label class="form-label" for="isbn">Código ISBN</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" 
                     id="isbn" name="isbn">
                 </div>
 
                 <div class="row mb-3">
-                    <button type="submit" class="btn btn-primary mb-2">Cadastrar Livro</button>
+                    <button type="submit" class="btn btn-primary w-auto">Cadastrar Livro</button>
                 </div>
                 </form>
             </div>
@@ -197,18 +190,29 @@ app.post("/livro",veri,(requisicao,resposta)=>{
             <title>Cadastro de Livros</title>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .btn-primary {
+                    padding: 8px 18px;
+                    font-size: 15px;
+                }
+            </style>
         </head>
 
         <body>
             <div class="container mt-5">
-                <form method="POST" action="/livro" class="row  gy-2 gx-3 align-items-center border p-3  ">
+                <form method="POST" action="/livro" class="row gy-2 gx-3 align-items-center border rounded bg-white shadow-sm p-4">
                 <legend>
                     <h3>Cadastre os Livros</h3>
                 </legend>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="titulo">Título do Livro</label>
-                    <input type="text" class="form-control " id="titulo" name="titulo" value="${titulo|| ""}" > `;
+                    <label class="form-label" for="titulo">Título do Livro</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" value="${titulo|| ""}" > `;
                 if (!titulo){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -221,8 +225,8 @@ app.post("/livro",veri,(requisicao,resposta)=>{
                 
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="autor">Nome do Autor</label>
-                    <input type="text" class="form-control " id="autor" name="autor" value="${autor|| ""}">`;
+                    <label class="form-label" for="autor">Nome do Autor</label>
+                    <input type="text" class="form-control" id="autor" name="autor" value="${autor|| ""}">`;
                 if (!autor){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -234,8 +238,7 @@ app.post("/livro",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="isbn"
-                    >Código ISBN</label>
+                    <label class="form-label" for="isbn">Código ISBN</label>
                     <input type="text" class="form-control" 
                     id="isbn" name="isbn" value="${isbn || ""}">`;
                 
@@ -250,7 +253,7 @@ app.post("/livro",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <button type="submit" class="btn btn-primary mb-2">Cadastrar Livro</button>
+                    <button type="submit" class="btn btn-primary w-auto">Cadastrar Livro</button>
                 </div>
                 </form>
             </div>
@@ -280,20 +283,32 @@ app.get("/listaLivros",veri,(requisicao,resposta)=>{
             <title>Cadastro de Livros</title>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .btn-primary {
+                    padding: 8px 18px;
+                    font-size: 15px;
+                }
+            </style>
         </head>
 
         <body>
             
             <div class="container mt-5">
-                <table class="table table-stripe table-hover">
-                    <thead>
-                                    <th scope="col">Nº</th>
-                                    <th scope="col">Título</th>
-                                    <th scope="col">Autor</th>
-                                    <th scope="col">ISBN</th>
-                    </thead>
-                    <tbody>
-            `);
+                <div class="bg-white border rounded shadow-sm p-4">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                                        <th scope="col">Nº</th>
+                                        <th scope="col">Título</th>
+                                        <th scope="col">Autor</th>
+                                        <th scope="col">ISBN</th>
+                        </thead>
+                        <tbody>
+                `);
 
             for(let i = 0;i<listaLivros.length;i++)
             {
@@ -311,8 +326,9 @@ app.get("/listaLivros",veri,(requisicao,resposta)=>{
             resposta.write(`
                         </tbody>
                     </table>
-                </div>
                     <a href="/livro" class="btn btn-primary mt-3">Continuar cadastrando</a>
+                </div>
+                </div>
                 </body>
                 </html>
                 `);
@@ -338,59 +354,64 @@ app.get("/leitor",veri,(requisicao,resposta)=>{
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .btn-primary {
+                    padding: 8px 18px;
+                    font-size: 15px;
+                }
+            </style>
         </head>
 
         <body>
             <div class="container mt-5">
-                <form method="POST" action="/leitor" class="row  gy-2 gx-3 align-items-center border p-3  ">
+                <form method="POST" action="/leitor" class="row gy-2 gx-3 align-items-center border rounded bg-white shadow-sm p-4">
                 <legend>
                     <h3>Cadastre os Leitores</h3>
                 </legend>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="nome"
-                    >Nome do Leitor</label>
+                    <label class="form-label" for="nome">Nome do Leitor</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="nome" name="nome" >
                 </div> 
                 
                 <div class="row mb-3">
-                    <label class="sr-only" for="cpf"
-                    >CPF ou Identificação</label>
+                    <label class="form-label" for="cpf">CPF ou Identificação</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" id="cpf" name="cpf" >
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="telefone"
-                    >Telefone para Contato</label>
+                    <label class="form-label" for="telefone">Telefone para Contato</label>
                     <input type="text" class="form-control mb-2 mr-sm-2" 
                     id="telefone" name="telefone">
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="dataEmprestimo"
-                    >Data de Empréstimo</label>
+                    <label class="form-label" for="dataEmprestimo">Data de Empréstimo</label>
                     <input type="date" class="form-control mb-2 mr-sm-2" 
                     id="dataEmprestimo" name="dataEmprestimo">
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="dataDevolucao"
-                    >Data de Devolução</label>
+                    <label class="form-label" for="dataDevolucao">Data de Devolução</label>
                     <input type="date" class="form-control mb-2 mr-sm-2" 
                     id="dataDevolucao" name="dataDevolucao">
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="livro"
-                    >Nome do Livro</label>
-                    <select class="form-control" id="livro" name="livro">
+                    <label class="form-label" for="livro">Nome do Livro</label>
+                    <select class="form-select" id="livro" name="livro">
                         <option value="">Selecione um livro</option>
                         ${opcoesLivros}
                     </select>
                 </div>
 
                 <div class="row mb-3">
-                    <button type="submit" class="btn btn-primary mb-2">Cadastrar Leitor</button>
+                    <button type="submit" class="btn btn-primary w-auto">Cadastrar Leitor</button>
                 </div>
                 </form>
             </div>
@@ -429,18 +450,29 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
             <title>Cadastro de Leitores</title>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .btn-primary {
+                    padding: 8px 18px;
+                    font-size: 15px;
+                }
+            </style>
         </head>
 
         <body>
             <div class="container mt-5">
-                <form method="POST" action="/leitor" class="row  gy-2 gx-3 align-items-center border p-3  ">
+                <form method="POST" action="/leitor" class="row gy-2 gx-3 align-items-center border rounded bg-white shadow-sm p-4">
                 <legend>
                     <h3>Cadastre os Leitores</h3>
                 </legend>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="nome">Nome do Leitor</label>
-                    <input type="text" class="form-control " id="nome" name="nome" value="${nome|| ""}" > `;
+                    <label class="form-label" for="nome">Nome do Leitor</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="${nome|| ""}" > `;
                 if (!nome){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -453,8 +485,8 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
                 
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="cpf">CPF ou Identificação</label>
-                    <input type="text" class="form-control " id="cpf" name="cpf" value="${cpf|| ""}">`;
+                    <label class="form-label" for="cpf">CPF ou Identificação</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" value="${cpf|| ""}">`;
                 if (!cpf){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -466,8 +498,8 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="telefone">Telefone para Contato</label>
-                    <input type="text" class="form-control " id="telefone" name="telefone" value="${telefone|| ""}">`;
+                    <label class="form-label" for="telefone">Telefone para Contato</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone" value="${telefone|| ""}">`;
                 if (!telefone){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -479,8 +511,8 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="dataEmprestimo">Data de Empréstimo</label>
-                    <input type="date" class="form-control " id="dataEmprestimo" name="dataEmprestimo" value="${dataEmprestimo|| ""}">`;
+                    <label class="form-label" for="dataEmprestimo">Data de Empréstimo</label>
+                    <input type="date" class="form-control" id="dataEmprestimo" name="dataEmprestimo" value="${dataEmprestimo|| ""}">`;
                 if (!dataEmprestimo){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -492,8 +524,8 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="dataDevolucao">Data de Devolução</label>
-                    <input type="date" class="form-control " id="dataDevolucao" name="dataDevolucao" value="${dataDevolucao|| ""}">`;
+                    <label class="form-label" for="dataDevolucao">Data de Devolução</label>
+                    <input type="date" class="form-control" id="dataDevolucao" name="dataDevolucao" value="${dataDevolucao|| ""}">`;
                 if (!dataDevolucao){
                     html +=`
                         <div class="alert alert-danger mt-2" role="alert">
@@ -505,8 +537,8 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <label class="sr-only" for="livro">Nome do Livro</label>
-                    <select class="form-control" id="livro" name="livro">
+                    <label class="form-label" for="livro">Nome do Livro</label>
+                    <select class="form-select" id="livro" name="livro">
                         <option value="">Selecione um livro</option>
                         ${opcoesLivros}
                     </select>`;
@@ -521,7 +553,7 @@ app.post("/leitor",veri,(requisicao,resposta)=>{
                 </div>
 
                 <div class="row mb-3">
-                    <button type="submit" class="btn btn-primary mb-2">Cadastrar Leitor</button>
+                    <button type="submit" class="btn btn-primary w-auto">Cadastrar Leitor</button>
                 </div>
                 </form>
             </div>
@@ -554,23 +586,35 @@ app.get("/listaLeitores",veri,(requisicao,resposta)=>{
             <title>Cadastro de Leitores</title>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+            <style>
+                body {
+                    background-color: #f8f9fa;
+                }
+
+                .btn-primary {
+                    padding: 8px 18px;
+                    font-size: 15px;
+                }
+            </style>
         </head>
 
         <body>
             
             <div class="container mt-5">
-                <table class="table table-stripe table-hover">
-                    <thead>
-                                    <th scope="col">Nº</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">CPF</th>
-                                    <th scope="col">Telefone</th>
-                                    <th scope="col">Data de Empréstimo</th>
-                                    <th scope="col">Data de Devolução</th>
-                                    <th scope="col">Livro</th>
-                    </thead>
-                    <tbody>
-            `);
+                <div class="bg-white border rounded shadow-sm p-4">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                                        <th scope="col">Nº</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">CPF</th>
+                                        <th scope="col">Telefone</th>
+                                        <th scope="col">Data de Empréstimo</th>
+                                        <th scope="col">Data de Devolução</th>
+                                        <th scope="col">Livro</th>
+                        </thead>
+                        <tbody>
+                `);
 
             for(let i = 0;i<listaLeitores.length;i++)
             {
@@ -591,8 +635,9 @@ app.get("/listaLeitores",veri,(requisicao,resposta)=>{
             resposta.write(`
                         </tbody>
                     </table>
-                </div>
                     <a href="/leitor" class="btn btn-primary mt-3">Continuar cadastrando</a>
+                </div>
+                </div>
                 </body>
                 </html>
                 `);
@@ -615,10 +660,7 @@ app.get("/login", (requisicao, resposta) => {
                 margin: 0;
                 padding: 0;
                 height: 100vh;
-            }
-
-            .gradient-custom {
-                background: linear-gradient(to right, #ff9a9e, #fecfef);
+                background-color: #f8f9fa;
             }
 
             .card {
@@ -627,33 +669,33 @@ app.get("/login", (requisicao, resposta) => {
         </style>
     </head>
 
-    <body class="gradient-custom">
+    <body>
 
-    <section class="vh-100">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+    <section class="vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
 
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-4">
 
-                    <div class="card bg-dark text-white">
-                        <div class="card-body p-5 text-center">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4 text-center">
 
                             <form action="/login" method="POST">
 
-                                <div class="mb-md-5 mt-md-4 pb-5">
+                                <div>
 
                                     <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                    <p class="text-white-50 mb-5">Entre com seu usuário e senha</p>
+                                    <p class="text-muted mb-4">Entre com seu usuário e senha</p>
 
-                                    <div class="mb-4">
-                                        <input type="text" name="usuario" class="form-control form-control-lg" placeholder="Usuário">
+                                    <div class="mb-3">
+                                        <input type="text" name="usuario" class="form-control" placeholder="Usuário">
                                     </div>
 
                                     <div class="mb-4">
-                                        <input type="password" name="senha" class="form-control form-control-lg" placeholder="Senha">
+                                        <input type="password" name="senha" class="form-control" placeholder="Senha">
                                     </div>
 
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">
+                                    <button class="btn btn-primary px-4" type="submit">
                                         Entrar
                                     </button>
 
@@ -686,9 +728,10 @@ app.post("/login", (requisicao, resposta) =>
         requisicao.session.logado = true;
 
         const dataultimo = new Date();
-        resposta.cookie("ultimo", dataultimo.toLocaleString(),{maxAge: 1000* 60* 60* 24* 30, httpOnly: true});
+        resposta.cookie("ultimo", dataultimo.toLocaleString(), {maxAge: 1000 * 60 * 60 * 24 * 30, httpOnly: true});
 
-        resposta.redirect("/menu")}
+        resposta.redirect("/menu");
+        }
 
         else 
         {
@@ -706,10 +749,7 @@ app.post("/login", (requisicao, resposta) =>
                     margin: 0;
                     padding: 0;
                     height: 100vh;
-                }
-
-                .gradient-custom {
-                    background: linear-gradient(to right, #ff9a9e, #fecfef);
+                    background-color: #f8f9fa;
                 }
 
                 .card {
@@ -718,37 +758,37 @@ app.post("/login", (requisicao, resposta) =>
             </style>
         </head>
 
-        <body class="gradient-custom">
+        <body>
 
-        <section class="vh-100">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
+        <section class="vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row d-flex justify-content-center align-items-center">
 
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-4">
 
-                    <div class="card bg-dark text-white">
-                        <div class="card-body p-5 text-center">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4 text-center">
 
                             <form action="/login" method="POST">
 
-                             <div class="mb-md-5 mt-md-4 pb-5">
+                             <div>
 
                              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                            <p class="text-white-50 mb-5">Entre com seu usuário e senha</p>
+                            <p class="text-muted mb-4">Entre com seu usuário e senha</p>
 
-                             <div class="mb-4">
-                                 <input type="text" name="usuario" value="${usuario || ""}" class="form-control form-control-lg">
+                             <div class="mb-3">
+                                 <input type="text" name="usuario" class="form-control" placeholder="Usuário">
                              </div>
 
                              <div class="mb-4">
-                                    <input type="password" name="senha" class="form-control form-control-lg" placeholder="Senha">
+                                    <input type="password" name="senha" class="form-control" placeholder="Senha">
                              </div>
 
                                     <div class="alert alert-danger" role="alert">
                                             Usuário ou senha inválidos!
                                     </div>
 
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">
+                                    <button class="btn btn-primary px-4" type="submit">
                                             Entrar
                                     </button>
 
